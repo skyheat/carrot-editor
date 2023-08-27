@@ -5,6 +5,7 @@ import "github-markdown-css/github-markdown-light.css";
 import { useTabIndentation } from "@/hooks/useTabIndentation";
 import { useResize } from "@/hooks/useResize";
 import WidthControlDivider from "../WidthControlDivider";
+import Toolbar from "../Toolbar";
 
 const TextEditor = () => {
   const [editorWidth, setEditorWidth] = useState("50%");
@@ -16,21 +17,31 @@ const TextEditor = () => {
   } = useTabIndentation();
 
   return (
-    <div className="flex w-screen">
-      <div ref={editorRef} className="relative" style={{ width: editorWidth }}>
+    <>
+      <div
+        ref={editorRef}
+        className="relative"
+        style={{ width: editorWidth, minWidth: editorWidth }}
+      >
         <textarea
-          className=" flex relative outline-none text-black border-0 pl-2 h-full w-full resize-none"
+          className="flex relative outline-none text-black border-0 pl-2 h-full w-full resize-none mb-10" // Add some margin-bottom
           placeholder="Write your markdown here..."
           onChange={(e) => setMarkdownText(e.target.value)}
           value={markdownText}
           onKeyDown={handleKeyDown}
         />
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10 w-1/2">
+          <Toolbar markdownText={markdownText} />
+        </div>
       </div>
       <WidthControlDivider
         onReset={() => setEditorWidth("50%")}
         resizingRef={resizingRef}
       />
-      <div className="markdown-body overflow-y-auto pl-2 grow">
+      <div
+        className="markdown-body overflow-y-auto pl-2" // Change to overflow-x-auto
+        style={{ width: `calc(100% - ${editorWidth})` }}
+      >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -45,7 +56,7 @@ const TextEditor = () => {
           {markdownText}
         </ReactMarkdown>
       </div>
-    </div>
+    </>
   );
 };
 

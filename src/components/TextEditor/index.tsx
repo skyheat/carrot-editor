@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import "github-markdown-css/github-markdown.css";
+import "github-markdown-css/github-markdown-light.css";
 import { useTabIndentation } from "@/hooks/useTabIndentation";
 import { useResize } from "@/hooks/useResize";
 import WidthControlDivider from "../WidthControlDivider";
@@ -19,7 +19,7 @@ const TextEditor = () => {
     <div className="flex w-screen">
       <div ref={editorRef} className="relative" style={{ width: editorWidth }}>
         <textarea
-          className=" flex relative outline-none text-black border-0 pl-2 h-full w-full resize-none dark:bg-blackpearl"
+          className=" flex relative outline-none text-black border-0 pl-2 h-full w-full resize-none"
           placeholder="Write your markdown here..."
           onChange={(e) => setMarkdownText(e.target.value)}
           value={markdownText}

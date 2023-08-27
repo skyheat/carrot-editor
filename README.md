@@ -33,10 +33,24 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-# Planned Features
+## Planned Features
 
 - Download/upload markdown file
 - Download preview (pdf, html)
 - Reset button
 - Content Management Server, persistent storage
 - Quick markdown reference
+
+## Potential Names
+
+- lian (Simplified Chinese: 莲; Traditional Chinese: 蓮) - Referring to the lotus, a symbol of purity and elegance.
+  - lianmd, liantext
+- lotus
+- peony
+- void
+- orchid
+- yan
+- 墨迹 (Mò jì): Ink mark or ink trace. It can represent the remnants or memories left behind in writing.
+- 少（shao）
+- snow (雪)
+- qing

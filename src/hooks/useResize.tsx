@@ -15,8 +15,8 @@ export const useResize = (
         let newWidth =
           event.clientX - editorRef.current.getBoundingClientRect().left;
 
-        const minWidth = parentWidth * 0.05; // 10% of the parent container's width
-        const maxWidth = parentWidth * 0.95; // 90% of the parent container's width
+        const minWidth = parentWidth * 0;
+        const maxWidth = parentWidth * 1;
 
         if (newWidth < minWidth) {
           newWidth = minWidth;

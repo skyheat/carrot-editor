@@ -10,7 +10,7 @@ type Props = {
 
 const Toolbar = ({ markdownText, className, setMarkdownText }: Props) => {
   return (
-    <div className="border-2 rounded-lg p-1 bg-gray-300 flex justify-evenly">
+    <div className="rounded-lg p-1 flex justify-evenly">
       <Download markdownText={markdownText} />
       <ClearText setMarkdownText={setMarkdownText} />
     </div>

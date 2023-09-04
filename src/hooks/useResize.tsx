@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 export const useResize = (
-  setEditorWidth: React.Dispatch<React.SetStateAction<string>>
+  setEditorWidth: React.Dispatch<React.SetStateAction<string>>,
+  setRenderPreview: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const resizingRef = useRef(false);
   const editorRef = useRef<HTMLDivElement>(null);
@@ -24,7 +25,15 @@ export const useResize = (
           newWidth = maxWidth;
         }
 
-        setEditorWidth(`${newWidth}px`);
+        const newWidthPercentage = (newWidth / parentWidth) * 100;
+        setEditorWidth(`${newWidthPercentage}%`);
+
+        if (newWidthPercentage >= 90) {
+          setRenderPreview(false);
+          setEditorWidth("100%");
+        } else {
+          setRenderPreview(true);
+        }
       }
     };
 

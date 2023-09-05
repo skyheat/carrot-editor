@@ -35,8 +35,11 @@ const TextEditor = () => {
           value={markdownText}
           onKeyDown={handleKeyDown}
         />
-        <div className="absolute top-0 right-1 transform flex flex-grow">
-          <MiniToolbar />
+        <div className="absolute top-0 right-0 transform flex flex-grow">
+          <MiniToolbar
+            markdownText={markdownText}
+            setEditorWidth={setEditorWidth}
+          />
         </div>
       </div>
       <WidthControlDivider
@@ -45,7 +48,7 @@ const TextEditor = () => {
       />
       {renderPreview && (
         <div
-          className="markdown-body overflow-y-auto pl-2"
+          className="markdown-body overflow-y-auto pl-2 pt-6"
           style={{ width: `calc(100% - ${editorWidth})` }}
         >
           <ReactMarkdown

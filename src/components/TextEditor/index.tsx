@@ -5,7 +5,7 @@ import "github-markdown-css/github-markdown-light.css";
 import { useTabIndentation } from "@/hooks/useTabIndentation";
 import { useResize } from "@/hooks/useResize";
 import WidthControlDivider from "../WidthControlDivider";
-import Toolbar from "../Toolbar";
+// import Toolbar from "../Toolbar";
 import MiniToolbar from "../MiniToolbar";
 
 const TextEditor = () => {
@@ -43,7 +43,9 @@ const TextEditor = () => {
         </div>
       </div>
       <WidthControlDivider
-        onReset={() => setEditorWidth("50%")}
+        onReset={() => {
+          setEditorWidth("50%"), setRenderPreview(true);
+        }}
         resizingRef={resizingRef}
       />
       {renderPreview && (

@@ -1,5 +1,3 @@
-import React from "react";
-
 interface WidthControlDividerProps {
   onReset: () => void;
   resizingRef: React.MutableRefObject<boolean>;

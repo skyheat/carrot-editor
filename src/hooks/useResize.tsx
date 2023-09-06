@@ -31,6 +31,9 @@ export const useResize = (
         if (newWidthPercentage >= 90) {
           setRenderPreview(false);
           setEditorWidth("100%");
+        } else if (newWidthPercentage <= 10) {
+          setRenderPreview(true);
+          setEditorWidth("0");
         } else {
           setRenderPreview(true);
         }
@@ -48,7 +51,7 @@ export const useResize = (
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [setEditorWidth]);
+  }, [setEditorWidth, setRenderPreview]);
 
   return { editorRef, resizingRef };
 };

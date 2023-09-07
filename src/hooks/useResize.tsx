@@ -33,7 +33,7 @@ export const useResize = (
           setEditorWidth("100%");
         } else if (newWidthPercentage <= 10) {
           setRenderPreview(true);
-          setEditorWidth("0");
+          setEditorWidth("0%");
         } else {
           setRenderPreview(true);
         }

@@ -39,6 +39,7 @@ const TextEditor = () => {
           <MiniToolbar
             markdownText={markdownText}
             setEditorWidth={setEditorWidth}
+            editorWidth={editorWidth}
           />
         </div>
       </div>

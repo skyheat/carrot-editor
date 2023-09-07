@@ -15,7 +15,7 @@ const WidthControlDivider = ({
       }}
       className="flex items-center justify-center bg-gray-300 cursor-ew-resize w-2"
     >
-      <button className="z-0" onClick={onReset}>
+      <button className="z-0 text-gray-500" onClick={onReset}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

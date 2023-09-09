@@ -29,7 +29,6 @@ const TextEditor = () => {
         className="relative overflow-hidden"
         style={{
           width: editorWidth,
-          // minWidth: editorWidth,
         }}
       >
         <textarea

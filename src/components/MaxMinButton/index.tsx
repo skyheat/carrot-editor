@@ -4,9 +4,14 @@ import { useEffect, useState } from "react";
 type Props = {
   editorWidth: string;
   setEditorWidth: (percentage: string) => void;
+  setRenderWidthControl: (boolean: boolean) => void;
 };
 
-const MaxMinButton = ({ setEditorWidth, editorWidth }: Props) => {
+const MaxMinButton = ({
+  setRenderWidthControl,
+  setEditorWidth,
+  editorWidth,
+}: Props) => {
   const [isFullScreen, setIsFullscreen] = useState(false);
   const [oldEditorWidth, setOldEditorWidth] = useState(editorWidth);
 
@@ -24,6 +29,7 @@ const MaxMinButton = ({ setEditorWidth, editorWidth }: Props) => {
         <button
           onClick={() => {
             setEditorWidth(oldEditorWidth);
+            setRenderWidthControl(true);
           }}
         >
           <Shrink size={16} onClick={() => setIsFullscreen(false)} />
@@ -33,6 +39,7 @@ const MaxMinButton = ({ setEditorWidth, editorWidth }: Props) => {
           onClick={() => {
             setOldEditorWidth(editorWidth);
             setEditorWidth("100%");
+            setRenderWidthControl(false);
           }}
         >
           <Expand size={16} onClick={() => setIsFullscreen(true)} />

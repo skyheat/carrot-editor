@@ -11,6 +11,7 @@ import MiniToolbar from "../MiniToolbar";
 const TextEditor = () => {
   const [editorWidth, setEditorWidth] = useState("50%");
   const [renderPreview, setRenderPreview] = useState(true);
+  const [renderWidthControl, setRenderWidthControl] = useState(true);
   const { editorRef, resizingRef } = useResize(
     setEditorWidth,
     setRenderPreview
@@ -43,15 +44,19 @@ const TextEditor = () => {
             markdownText={markdownText}
             setEditorWidth={setEditorWidth}
             editorWidth={editorWidth}
+            setRenderWidthControl={setRenderWidthControl}
           />
         </div>
       </div>
-      <WidthControlDivider
-        onReset={() => {
-          setEditorWidth("50%"), setRenderPreview(true);
-        }}
-        resizingRef={resizingRef}
-      />
+      {renderWidthControl && (
+        <WidthControlDivider
+          onReset={() => {
+            setEditorWidth("50%"), setRenderPreview(true);
+          }}
+          resizingRef={resizingRef}
+        />
+      )}
+
       {renderPreview && (
         <div
           className="markdown-body overflow-y-auto pl-2 pt-6"

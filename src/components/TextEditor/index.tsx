@@ -26,7 +26,10 @@ const TextEditor = () => {
       <div
         ref={editorRef}
         className="relative overflow-hidden"
-        style={{ width: editorWidth, minWidth: editorWidth }}
+        style={{
+          width: editorWidth,
+          minWidth: editorWidth,
+        }}
       >
         <textarea
           className="flex relative outline-none text-black border-0 pl-2 pt-6 h-full w-full resize-none mb-10"

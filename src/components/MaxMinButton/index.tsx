@@ -1,5 +1,5 @@
 import { Expand, Shrink } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   editorWidth: string;
@@ -7,27 +7,35 @@ type Props = {
 };
 
 const MaxMinButton = ({ setEditorWidth, editorWidth }: Props) => {
-  const [isMax, setIsMax] = useState(true);
+  const [isFullScreen, setIsFullscreen] = useState(false);
   const [oldEditorWidth, setOldEditorWidth] = useState(editorWidth);
+
+  useEffect(() => {
+    if (editorWidth == "100%") {
+      setIsFullscreen(true);
+    } else {
+      setIsFullscreen(false);
+    }
+  }, [editorWidth, setIsFullscreen]);
 
   return (
     <>
-      {isMax ? (
+      {isFullScreen ? (
+        <button
+          onClick={() => {
+            setEditorWidth(oldEditorWidth);
+          }}
+        >
+          <Shrink size={16} onClick={() => setIsFullscreen(false)} />
+        </button>
+      ) : (
         <button
           onClick={() => {
             setOldEditorWidth(editorWidth);
             setEditorWidth("100%");
           }}
         >
-          <Expand size={16} onClick={() => setIsMax(!isMax)} />
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setEditorWidth(oldEditorWidth);
-          }}
-        >
-          <Shrink size={16} onClick={() => setIsMax(!isMax)} />
+          <Expand size={16} onClick={() => setIsFullscreen(true)} />
         </button>
       )}
     </>

@@ -1,19 +1,16 @@
-import { Dispatch, SetStateAction } from "react";
 import Download from "../Download";
 import MaxMinButton from "../MaxMinButton";
 
 type Props = {
   markdownText: string;
-  setEditorWidth: (percentage: string) => void;
-  editorWidth: string;
-  setRenderWidthControl: (boolean: boolean) => void;
+  notFullScreen: boolean;
+  toggleFullScreen: () => void;
 };
 
 const MiniToolbar = ({
   markdownText,
-  setEditorWidth,
-  editorWidth,
-  setRenderWidthControl,
+  notFullScreen,
+  toggleFullScreen,
 }: Props) => {
   return (
     <>
@@ -22,9 +19,8 @@ const MiniToolbar = ({
         <Download markdownText={markdownText} />
         <p>Settings</p>
         <MaxMinButton
-          setEditorWidth={setEditorWidth}
-          editorWidth={editorWidth}
-          setRenderWidthControl={setRenderWidthControl}
+          notFullScreen={notFullScreen}
+          toggleFullScreen={toggleFullScreen}
         />
       </div>
     </>

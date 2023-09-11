@@ -12,10 +12,12 @@ const TextEditor = () => {
   const [editorWidth, setEditorWidth] = useState("50%");
   const [renderPreview, setRenderPreview] = useState(true);
   const [renderWidthControl, setRenderWidthControl] = useState(true);
-  const { editorRef, resizingRef } = useResize(
+  const { editorRef, resizingRef, notFullScreen, toggleFullScreen } = useResize(
     setEditorWidth,
-    setRenderPreview
+    setRenderPreview,
+    setRenderWidthControl
   );
+
   const {
     text: markdownText,
     setText: setMarkdownText,
@@ -26,13 +28,14 @@ const TextEditor = () => {
     <>
       <div
         ref={editorRef}
-        className="relative overflow-hidden"
+        className="relative overflow-hidden h-full "
         style={{
           width: editorWidth,
+          minWidth: editorWidth,
         }}
       >
         <textarea
-          className="flex relative outline-none text-black border-0 pl-2 pt-6 h-full w-full resize-none mb-10"
+          className="flex relative outline-none text-black border-0 pl-2 pt-6 h-full w-full resize-none mb-10 "
           placeholder="Write your markdown here..."
           onChange={(e) => setMarkdownText(e.target.value)}
           value={markdownText}
@@ -41,9 +44,8 @@ const TextEditor = () => {
         <div className="absolute top-0 right-0 transform flex flex-grow">
           <MiniToolbar
             markdownText={markdownText}
-            setEditorWidth={setEditorWidth}
-            editorWidth={editorWidth}
-            setRenderWidthControl={setRenderWidthControl}
+            notFullScreen={notFullScreen}
+            toggleFullScreen={toggleFullScreen}
           />
         </div>
       </div>

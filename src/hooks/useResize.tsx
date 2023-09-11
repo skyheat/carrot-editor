@@ -1,12 +1,42 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export const useResize = (
   setEditorWidth: React.Dispatch<React.SetStateAction<string>>,
-  setRenderPreview: React.Dispatch<React.SetStateAction<boolean>>
+  setRenderPreview: React.Dispatch<React.SetStateAction<boolean>>,
+  setRenderWidthControl: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const resizingRef = useRef(false);
   const editorRef = useRef<HTMLDivElement>(null);
 
+  const [notFullScreen, setNotFullScreen] = useState(false);
+  const [oldEditorWidth, setOldEditorWidth] = useState("50%");
+
+  const toggleFullScreen = () => {
+    console.log(notFullScreen, editorRef.current?.style.width);
+    if (notFullScreen) {
+      setEditorWidth(oldEditorWidth);
+      setNotFullScreen(false);
+      setRenderWidthControl(true);
+      setRenderPreview(true);
+    }
+    if (!notFullScreen) {
+      if (
+        editorRef.current?.style.width &&
+        editorRef.current?.style.width >= "95%"
+      ) {
+        setOldEditorWidth("50%");
+        setEditorWidth("100%");
+        setNotFullScreen(true);
+        setRenderWidthControl(false);
+        setRenderPreview(false);
+      }
+      setOldEditorWidth(editorRef.current?.style.width || "50%");
+      setEditorWidth("100%");
+      setNotFullScreen(true);
+      setRenderWidthControl(false);
+      setRenderPreview(false);
+    }
+  };
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       event.preventDefault();
@@ -28,13 +58,18 @@ export const useResize = (
         const newWidthPercentage = (newWidth / parentWidth) * 100;
         setEditorWidth(`${newWidthPercentage}%`);
 
-        if (newWidthPercentage >= 90) {
+        if (newWidthPercentage >= 95) {
+          setRenderWidthControl(false);
           setRenderPreview(false);
           setEditorWidth("100%");
-        } else if (newWidthPercentage <= 10) {
+          setNotFullScreen(true);
+        } else if (newWidthPercentage <= 5) {
+          setRenderWidthControl(false);
           setRenderPreview(true);
           setEditorWidth("0%");
+          setNotFullScreen(true);
         } else {
+          // setRenderWidthControl(true);
           setRenderPreview(true);
         }
       }
@@ -51,7 +86,7 @@ export const useResize = (
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [setEditorWidth, setRenderPreview]);
+  }, [setEditorWidth, setRenderPreview, setRenderWidthControl]);
 
-  return { editorRef, resizingRef };
+  return { editorRef, resizingRef, notFullScreen, toggleFullScreen };
 };

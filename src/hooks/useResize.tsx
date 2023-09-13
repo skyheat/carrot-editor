@@ -64,12 +64,12 @@ export const useResize = (
           setEditorWidth("100%");
           setNotFullScreen(true);
         } else if (newWidthPercentage <= 5) {
-          setRenderWidthControl(false);
+          setRenderWidthControl(true);
           setRenderPreview(true);
           setEditorWidth("0%");
           setNotFullScreen(true);
         } else {
-          // setRenderWidthControl(true);
+          setRenderWidthControl(true);
           setRenderPreview(true);
         }
       }

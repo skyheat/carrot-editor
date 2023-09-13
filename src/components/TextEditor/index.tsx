@@ -7,22 +7,50 @@ import { useResize } from "@/hooks/useResize";
 import WidthControlDivider from "../WidthControlDivider";
 // import Toolbar from "../Toolbar";
 import MiniToolbar from "../MiniToolbar";
+import Modal from "../Modal";
+import About from "../About";
+import Settings from "../Settings";
 
 const TextEditor = () => {
   const [editorWidth, setEditorWidth] = useState("50%");
   const [renderPreview, setRenderPreview] = useState(true);
   const [renderWidthControl, setRenderWidthControl] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<"about" | "settings" | null>(
+    null
+  );
+
   const { editorRef, resizingRef, notFullScreen, toggleFullScreen } = useResize(
     setEditorWidth,
     setRenderPreview,
     setRenderWidthControl
   );
-
   const {
     text: markdownText,
     setText: setMarkdownText,
     handleKeyDown,
   } = useTabIndentation();
+
+  const openModal = (content: "about" | "settings") => {
+    setIsModalOpen(true);
+    setModalContent(content);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalContent(null);
+  };
+
+  const renderModalContent = () => {
+    switch (modalContent) {
+      case "about":
+        return <About />;
+      case "settings":
+        return <Settings />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
@@ -46,8 +74,15 @@ const TextEditor = () => {
             markdownText={markdownText}
             notFullScreen={notFullScreen}
             toggleFullScreen={toggleFullScreen}
+            openModal={openModal}
           />
         </div>
+        {isModalOpen && (
+          <Modal onClose={closeModal}>
+            {renderModalContent()}
+            {/* {modalContent == "about" ? <About /> : <Settings />} */}
+          </Modal>
+        )}
       </div>
       {renderWidthControl && (
         <WidthControlDivider

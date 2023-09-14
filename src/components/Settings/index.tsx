@@ -1,11 +1,11 @@
-type Props = {};
+type Props = {}
 
 const Settings = (props: Props) => {
-  return (
-    <>
-      <h1>Settings</h1>
-    </>
-  );
-};
+ return (
+  <>
+   <h1>Settings</h1>
+  </>
+ )
+}
 
-export default Settings;
+export default Settings

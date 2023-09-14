@@ -1,29 +1,29 @@
-import React from "react";
+import React from "react"
 
 type Props = {
-  markdownText: string;
-};
+ markdownText: string
+}
 
 const Download = ({ markdownText }: Props) => {
-  function downloadMarkdown(content: BlobPart, filename = "download.md") {
-    const blob = new Blob([content], { type: "text/markdown" });
+ function downloadMarkdown(content: BlobPart, filename = "download.md") {
+  const blob = new Blob([content], { type: "text/markdown" })
 
-    const a = document.createElement("a");
+  const a = document.createElement("a")
 
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
+  a.href = URL.createObjectURL(blob)
+  a.download = filename
 
-    document.body.appendChild(a);
+  document.body.appendChild(a)
 
-    a.click();
+  a.click()
 
-    document.body.removeChild(a);
-  }
-  return (
-    <button onClick={() => downloadMarkdown(markdownText)}>
-      <p>Download</p>
-    </button>
-  );
-};
+  document.body.removeChild(a)
+ }
+ return (
+  <button onClick={() => downloadMarkdown(markdownText)}>
+   <p>Download</p>
+  </button>
+ )
+}
 
-export default Download;
+export default Download

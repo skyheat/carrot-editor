@@ -5,5 +5,5 @@
 *,
 ::after,
 ::before {
-  @apply box-border;
+ @apply box-border;
 }

@@ -6,7 +6,7 @@ type ModalProps = {
 const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
  return (
   <div className="absolute inset-0 z-50 flex items-center justify-center">
-   <div className="bg-black opacity-60 absolute inset-0"></div>
+   <div className="bg-black opacity-30 absolute inset-0"></div>
    <div className="relative bg-white w-3/4 h-3/4 rounded shadow-lg">
     <button
      onClick={onClose}

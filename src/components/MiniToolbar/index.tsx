@@ -1,3 +1,4 @@
+import { Carrot, Egg, Rabbit } from "lucide-react"
 import Download from "../Download"
 import MaxMinButton from "../MaxMinButton"
 
@@ -17,9 +18,11 @@ const MiniToolbar = ({
  return (
   <>
    <div className=" bg-gray-200 flex flex-row space-x-2 text-xs p-1 text-gray-400">
+    <Carrot size={16} />
+    <p>Carrot</p>
     <button onClick={() => openModal("about")}>About</button>
     <Download markdownText={markdownText} />
-    <button onClick={() => openModal("settings")}>Settings</button>
+    {/* <button onClick={() => openModal("settings")}>Settings</button> */}
     <MaxMinButton
      notFullScreen={notFullScreen}
      toggleFullScreen={toggleFullScreen}

@@ -1,4 +1,4 @@
-import { Carrot, Egg, Rabbit } from "lucide-react"
+import { Carrot } from "lucide-react"
 import Download from "../Download"
 import MaxMinButton from "../MaxMinButton"
 

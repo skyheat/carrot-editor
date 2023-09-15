@@ -3,7 +3,7 @@ type ModalProps = {
  children: React.ReactNode
 }
 
-const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ onClose, children }: ModalProps) => {
  return (
   <div className="absolute inset-0 z-50 flex items-center justify-center">
    <div className="bg-black opacity-30 absolute inset-0"></div>

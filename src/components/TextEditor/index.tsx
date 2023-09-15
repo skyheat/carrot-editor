@@ -97,12 +97,8 @@ const TextEditor = () => {
      <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
-       ol: ({ node, ...props }) => (
-        <ol style={{ listStyle: "revert" }} {...props} />
-       ),
-       ul: ({ node, ...props }) => (
-        <ul style={{ listStyle: "revert" }} {...props} />
-       ),
+       ol: ({ ...props }) => <ol style={{ listStyle: "revert" }} {...props} />,
+       ul: ({ ...props }) => <ul style={{ listStyle: "revert" }} {...props} />,
       }}
      >
       {markdownText}

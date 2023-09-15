@@ -1,6 +1,4 @@
-type Props = {}
-
-const Settings = (props: Props) => {
+const Settings = () => {
  return (
   <>
    <h1>Settings</h1>

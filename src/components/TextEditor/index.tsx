@@ -1,13 +1,13 @@
+import { useResize } from "@/hooks/useResize"
+import WidthControlDivider from "../WidthControlDivider"
+import { useTabIndentation } from "@/hooks/useTabIndentation"
+import "github-markdown-css/github-markdown-light.css"
 import { useState } from "react"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-import "github-markdown-css/github-markdown-light.css"
-import { useTabIndentation } from "@/hooks/useTabIndentation"
-import { useResize } from "@/hooks/useResize"
-import WidthControlDivider from "../WidthControlDivider"
+import About from "../About"
 import MiniToolbar from "../MiniToolbar"
 import Modal from "../Modal"
-import About from "../About"
 import Settings from "../Settings"
 
 const TextEditor = () => {
@@ -62,7 +62,9 @@ const TextEditor = () => {
     }}
    >
     <textarea
-     className="flex relative outline-none text-black border-0 px-6 pt-6 h-full w-full mx-auto resize-none mb-10"
+     className={`flex relative outline-none text-black border-0 px-6 pt-6 h-full mx-auto resize-none mb-10 ${
+      editorWidth == "100%" ? "w-1/2" : "w-full"
+     }`}
      placeholder="Write your markdown here..."
      onChange={(e) => setMarkdownText(e.target.value)}
      value={markdownText}
@@ -76,12 +78,7 @@ const TextEditor = () => {
       openModal={openModal}
      />
     </div>
-    {isModalOpen && (
-     <Modal onClose={closeModal}>
-      {renderModalContent()}
-      {/* {modalContent == "about" ? <About /> : <Settings />} */}
-     </Modal>
-    )}
+    {isModalOpen && <Modal onClose={closeModal}>{renderModalContent()}</Modal>}
    </div>
    {renderWidthControl && (
     <WidthControlDivider

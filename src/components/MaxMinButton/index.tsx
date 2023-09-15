@@ -1,4 +1,3 @@
-import { useResize } from "@/hooks/useResize"
 import { Expand, Shrink } from "lucide-react"
 
 type Props = {

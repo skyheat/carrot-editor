@@ -63,7 +63,7 @@ const TextEditor = () => {
    >
     <textarea
      className={`flex relative outline-none text-black border-0 px-6 pt-6 h-full mx-auto resize-none mb-10 ${
-      editorWidth == "100%" ? "w-1/2" : "w-full"
+      editorWidth == "100%" ? "w-1/2 drop-shadow-2xl mt-4" : "w-full"
      }`}
      placeholder="Write your markdown here..."
      onChange={(e) => setMarkdownText(e.target.value)}

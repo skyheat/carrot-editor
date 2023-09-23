@@ -8,31 +8,31 @@ export const useResize = (
  const resizingRef = useRef(false)
  const editorRef = useRef<HTMLDivElement>(null)
 
- const [notFullScreen, setNotFullScreen] = useState(false)
+ const [isFullScreen, setIsFullScreen] = useState(false)
  const [oldEditorWidth, setOldEditorWidth] = useState("50%")
 
  const toggleFullScreen = () => {
-  console.log(notFullScreen, editorRef.current?.style.width)
-  if (notFullScreen) {
+  console.log(isFullScreen, editorRef.current?.style.width)
+  if (isFullScreen) {
    setEditorWidth(oldEditorWidth)
-   setNotFullScreen(false)
+   setIsFullScreen(false)
    setRenderWidthControl(true)
    setRenderPreview(true)
   }
-  if (!notFullScreen) {
+  if (!isFullScreen) {
    if (
     editorRef.current?.style.width &&
     editorRef.current?.style.width >= "95%"
    ) {
     setOldEditorWidth("50%")
     setEditorWidth("100%")
-    setNotFullScreen(true)
+    setIsFullScreen(true)
     setRenderWidthControl(false)
     setRenderPreview(false)
    }
    setOldEditorWidth(editorRef.current?.style.width || "50%")
    setEditorWidth("100%")
-   setNotFullScreen(true)
+   setIsFullScreen(true)
    setRenderWidthControl(false)
    setRenderPreview(false)
   }
@@ -62,12 +62,12 @@ export const useResize = (
      setRenderWidthControl(false)
      setRenderPreview(false)
      setEditorWidth("100%")
-     setNotFullScreen(true)
+     setIsFullScreen(true)
     } else if (newWidthPercentage <= 5) {
      setRenderWidthControl(true)
      setRenderPreview(true)
      setEditorWidth("0%")
-     setNotFullScreen(false)
+     setIsFullScreen(false)
     } else {
      setRenderWidthControl(true)
      setRenderPreview(true)
@@ -88,5 +88,5 @@ export const useResize = (
   }
  }, [setEditorWidth, setRenderPreview, setRenderWidthControl])
 
- return { editorRef, resizingRef, notFullScreen, toggleFullScreen }
+ return { editorRef, resizingRef, isFullScreen, toggleFullScreen }
 }

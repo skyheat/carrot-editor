@@ -1,14 +1,14 @@
 import { Expand, Shrink } from "lucide-react"
 
 type Props = {
- notFullScreen: boolean
+ isFullScreen: boolean
  toggleFullScreen: () => void
 }
 
-const MaxMinButton = ({ notFullScreen, toggleFullScreen }: Props) => {
+const MaxMinButton = ({ isFullScreen, toggleFullScreen }: Props) => {
  return (
   <>
-   {notFullScreen ? (
+   {isFullScreen ? (
     <button onClick={toggleFullScreen}>
      <Shrink size={16} />
     </button>

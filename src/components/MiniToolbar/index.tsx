@@ -4,14 +4,14 @@ import MaxMinButton from "../MaxMinButton"
 
 type Props = {
  markdownText: string
- notFullScreen: boolean
+ isFullScreen: boolean
  toggleFullScreen: () => void
  openModal: (content: "about" | "settings") => void
 }
 
 const MiniToolbar = ({
  markdownText,
- notFullScreen,
+ isFullScreen,
  toggleFullScreen,
  openModal,
 }: Props) => {
@@ -24,7 +24,7 @@ const MiniToolbar = ({
     <Download markdownText={markdownText} />
     {/* <button onClick={() => openModal("settings")}>Settings</button> */}
     <MaxMinButton
-     notFullScreen={notFullScreen}
+     isFullScreen={isFullScreen}
      toggleFullScreen={toggleFullScreen}
     />
    </div>

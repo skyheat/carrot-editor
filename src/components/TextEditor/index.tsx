@@ -19,7 +19,7 @@ const TextEditor = () => {
   null
  )
 
- const { editorRef, resizingRef, notFullScreen, toggleFullScreen } = useResize(
+ const { editorRef, resizingRef, isFullScreen, toggleFullScreen } = useResize(
   setEditorWidth,
   setRenderPreview,
   setRenderWidthControl
@@ -73,7 +73,7 @@ const TextEditor = () => {
     <div className="absolute top-0 right-0 transform flex flex-grow">
      <MiniToolbar
       markdownText={markdownText}
-      notFullScreen={notFullScreen}
+      isFullScreen={isFullScreen}
       toggleFullScreen={toggleFullScreen}
       openModal={openModal}
      />

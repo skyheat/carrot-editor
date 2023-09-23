@@ -67,7 +67,7 @@ export const useResize = (
      setRenderWidthControl(true)
      setRenderPreview(true)
      setEditorWidth("0%")
-     setNotFullScreen(true)
+     setNotFullScreen(false)
     } else {
      setRenderWidthControl(true)
      setRenderPreview(true)

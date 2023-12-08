@@ -32,27 +32,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Planned Features
-
-- Download/upload markdown file
-- Download preview (pdf, html)
-- Reset button
-- Content Management Server, persistent storage
-- Quick markdown reference
-- mini toolbar on the bottom/top
-
-## Potential Names
-
-- lian (Simplified Chinese: 莲; Traditional Chinese: 蓮) - Referring to the lotus, a symbol of purity and elegance.
-  - lianmd, liantext
-- lotus
-- peony
-- void
-- orchid
-- yan
-- 墨迹 (Mò jì): Ink mark or ink trace. It can represent the remnants or memories left behind in writing.
-- 少（shao）
-- snow (雪)
-- qing
-- penguin

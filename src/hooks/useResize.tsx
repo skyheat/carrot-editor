@@ -71,6 +71,7 @@ export const useResize = (
     } else {
      setRenderWidthControl(true)
      setRenderPreview(true)
+     setIsFullScreen(false)
     }
    }
   }
